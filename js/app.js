@@ -9,26 +9,34 @@ AppState.prototype.instantiateProducts = function () {
   const productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'water-can', 'wine-glass'];
 
   for (let i = 0; i < productNames.length; i++) {
-    if (productNames[i] === 'sweep') {
-      this.allProducts.push(new Product(productNames[i], 'png'))
-    } else {
-      this.allProducts.push(new Product(productNames[i]))
-    }
+    this.allProducts.push(new Product(productNames[i]));
   }
 
 }
 
 AppState.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save product data to local storage
-}
 
-AppState.prototype.loadItems = function () {
+  let allProductsJSON = JSON.stringify(this.allProducts);  // variable to convert allProducts Array into JSON
 
-  // TODO: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
+  localStorage.setItem('allProducts', allProductsJSON); // command to set allProductsJSON into the local storage
+}; 
 
-  this.instantiateProducts();
 
-}
+
+AppState.prototype.loadItems = function () { // TODO: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
+
+let allProductsJSON = localStorage.getItem('allProducts'); // make attempt to load products from local storage
+
+if (allProductsJSON) { // this checks if data was retrieved
+
+  this.allProducts = JSON.parse(allProductsJSON) // pull from local storage if data exists 
+  
+} else {
+  
+  this.instantiateProducts(); // create new instances if data does not exist
+
+}}
 
 
 function Product(name, fileExtension = 'jpg') {
