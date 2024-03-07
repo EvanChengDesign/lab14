@@ -17,7 +17,7 @@ function generateRandomProduct() {
 
 function renderProductImages() {
 
-  while (productIndexArray.length < 6) {
+  while (productIndexArray.length < 3) {
     let randomProductIndex = generateRandomProduct();
     if (!productIndexArray.includes(randomProductIndex)) {
       productIndexArray.push(randomProductIndex);
