@@ -29,11 +29,9 @@ AppState.prototype.loadItems = function () { // TODO: Update this instance metho
 let allProductsJSON = localStorage.getItem('allProducts'); // make attempt to load products from local storage
 
 if (allProductsJSON) { // this checks if data was retrieved
-
   this.allProducts = JSON.parse(allProductsJSON) // pull from local storage if data exists 
   
 } else {
-  
   this.instantiateProducts(); // create new instances if data does not exist
 
 }}
