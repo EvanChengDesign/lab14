@@ -1,5 +1,6 @@
 'use strict';
 
+
 let votingRounds = 25;
 let productIndexArray = [];
 
@@ -16,7 +17,7 @@ function generateRandomProduct() {
 
 function renderProductImages() {
 
-  while (productIndexArray.length < 3 ) { // 3 indexes per round
+  while (productIndexArray.length < 3) {
     let randomProductIndex = generateRandomProduct();
     if (!productIndexArray.includes(randomProductIndex)) {
       productIndexArray.push(randomProductIndex);
@@ -24,12 +25,12 @@ function renderProductImages() {
   }
 
   for (let i = 0; i < imgElements.length; i++) {
-    let randomIndex = productIndexArray.shift() // no duplicates 
+    let randomIndex = productIndexArray.shift()
 
-    imgElements[i].src = state.allProducts[randomIndex].source // These actions visually update the product images on the web page for the user to see and vote on
+    imgElements[i].src = state.allProducts[randomIndex].source
     imgElements[i].title = state.allProducts[randomIndex].name
     imgElements[i].alt = state.allProducts[randomIndex].name
-    state.allProducts[randomIndex].timesShown++; // tracks how many times each image is shown per instance
+    state.allProducts[randomIndex].timesShown++;
   }
 }
 

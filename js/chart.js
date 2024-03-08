@@ -1,23 +1,17 @@
 'use strict';
-
-
 let state = new AppState();
 state.loadItems(); // Load items from localStorage
-
 let canvasElem = document.getElementById('chart');
-
 function renderChart() {
 // Prepare the data for Chart.js
 let labels = [];
 let timesShownData = [];
 let timesClickedData = [];
-
 for (let i = 0; i < state.allProducts.length; i++) {
     labels.push(state.allProducts[i].name);
     timesShownData.push(state.allProducts[i].timesShown);
     timesClickedData.push(state.allProducts[i].timesClicked);
 }
-
 let data = {
     labels: labels,
     datasets: [{
@@ -34,7 +28,6 @@ let data = {
       borderWidth: 1
     }]
 };
-
 // Configuration object for Chart.js
 let config = {
     type: 'bar', // Type of chart
@@ -47,9 +40,7 @@ let config = {
       }
     }
 };
-
 // Instantiate a new Chart
 new Chart(canvasElem, config);
 }
-
 renderChart();
